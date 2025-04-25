@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Bucin Loading</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 50px;
+      text-align: center;
+      background: #fff0f5;
+    }
+
+    #bucinButton {
+      padding: 14px 30px;
+      font-size: 20px;
+      background-color: #1b1818;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    #bucinButton:hover {
+      background-color: #ff1e4a;
+      transform: scale(1.05);
+    }
+
+    #bucinText {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #d6336c;
+      min-height: 30px;
+    }
+
+    .loading {
+      font-style: italic;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="bucinButton"> Klik Ncep </button>
+  <div id="bucinText"></div>
+
+  <script>
+    const kataBucin = [
+      "Aku kangen kamu 😘",
+      "Kamu kopi, aku gulanya ☕🍬",
+      "Senyummu itu candu 😍",
+      "Peluk kamu rasanya damai 🫂",
+      "Aku milik kamu, kamu milik aku 💑",
+      "Jatuh cinta sama kamu tiap hari 💘",
+      "Mau jadi alasan kamu bahagia 💞",
+      "Kalau kamu senyum, dunia ikutan indah 🌸"
+    ];
+
+    const button = document.getElementById('bucinButton');
+    const textContainer = document.getElementById('bucinText');
+
+    button.addEventListener('click', () => {
+      textContainer.innerHTML = "<span class='loading'>Lagi mikirin kata bucin... 🤔</span>";
+      button.disabled = true;
+      button.innerText = "⏳ Tunggu ya...";
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * kataBucin.length);
+        textContainer.innerText = kataBucin[randomIndex];
+        button.disabled = false;
+        button.innerText = "💖 Klik Ncep Lagi 💖";
+      }, 1500); // loading delay 1.5 detik
+    });
+  </script>
+
+</body>
+</html>
